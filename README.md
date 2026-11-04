@@ -1,6 +1,6 @@
-# GB-Template
+# Chinese Standard Template
 
-用于起草中华人民共和国国家标准的 LaTeX 模板。本项目已针对 TeX Live 2026 翻新，提供 XeLaTeX、latexmk、Biber、中文索引和 VSCode 构建配置。
+用于起草国家标准、行业标准、地方标准、团体标准和企业标准的 LaTeX 模板。本项目提供 TeX Live 2026、XeLaTeX、latexmk、Biber、中文索引和 VSCode 构建配置。
 
 ## 规范依据
 
@@ -26,6 +26,15 @@
 make.bat
 ```
 
+也可指定标准类型示例：
+
+```bat
+make.bat examples/industry
+make.bat examples/local
+make.bat examples/association
+make.bat examples/enterprise
+```
+
 清理生成文件：
 
 ```bat
@@ -35,13 +44,13 @@ make.bat clean
 ### 命令行
 
 ```bash
-latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error GB-template
+latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error Chinese-Standard-Template
 ```
 
 清理生成文件：
 
 ```bash
-latexmk -C GB-template
+latexmk -C Chinese-Standard-Template
 ```
 
 `latexmkrc` 会自动完成 XeLaTeX、Biber、中文索引生成和索引后处理。`buildindex.py` 按顺序调用 `zhmakeindex` 与 `adjustind.py`，任一步骤失败都会中断构建。
@@ -57,9 +66,10 @@ latexmk -C GB-template
 ## 项目结构
 
 ```text
-GB-template.tex       示例主文档和封面参数
-GB-template.cls       文档类、版式与参考文献配置
+Chinese-Standard-Template.tex       示例主文档和封面参数
+Chinese-Standard-Template.cls       文档类、版式与参考文献配置
 body/                 前言、引言、正文和附录示例
+examples/             行业、地方、团体、企业及旧类名兼容示例
 figures/              图片资源
 references/           GB/T 1.1—2020 规范文件
 bibfile.bib           参考文献数据库
@@ -72,7 +82,28 @@ make.bat              Windows 构建入口
 
 ## 模板使用
 
-封面参数在 `GB-template.tex` 中设置：
+### 标准类型
+
+先使用 `\standardtype` 选择类型，再按需覆盖代号、Logo 或封面名称：
+
+```tex
+\standardtype{national} % 国家标准，默认
+% 可选：industry、local、association、enterprise
+\standardcode{GB/T}
+\standardlogo{GB-LOGO.jpg}
+\standardcovername{中华人民共和国国家标准}
+```
+
+- `industry`：行业标准，使用 `\recordnumber{备案号}` 添加备案号。
+- `local`：地方标准，示例使用规范中的 `DBXX` 标识。
+- `association`：团体标准，使用 `\standardcode{T/CAS}` 等文字代号。
+- `enterprise`：企业标准，使用 `\standardcode{Q/XX}` 等文字代号。
+- `\standardlogo{图片文件名}`：使用自定义组织 Logo，建议尺寸为 40mm×20mm；不设置时使用对应默认标识。
+- `\standardcovername{...}`：需要国家标准化指导性技术文件等其他类别时，覆盖封面类别名称。
+
+`examples/` 提供四类独立示例；`examples/legacy.tex` 验证旧 `\documentclass{GB-template}` 的兼容性。所有示例的 PDF 均输出到项目根目录。
+
+封面参数在 `Chinese-Standard-Template.tex` 中设置：
 
 ```tex
 \ICS{ICS 号}
