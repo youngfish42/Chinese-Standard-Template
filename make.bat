@@ -19,10 +19,15 @@ where python >nul 2>nul || (
     exit /b 1
 )
 
-if /i "%~1"=="clean" (
-    latexmk -C GB-template
+set "TARGET=%~1"
+if "%TARGET%"=="" set "TARGET=Chinese-Standard-Template"
+
+if /i "%TARGET%"=="clean" (
+    set "TARGET=%~2"
+    if "%TARGET%"=="" set "TARGET=Chinese-Standard-Template"
+    latexmk -C "%TARGET%"
     exit /b %errorlevel%
 )
 
-latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error GB-template
+latexmk -xelatex -synctex=1 -interaction=nonstopmode -file-line-error "%TARGET%"
 exit /b %errorlevel%

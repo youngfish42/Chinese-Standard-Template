@@ -24,6 +24,13 @@
 
 # Generated documents
 GB-template*.pdf
+Chinese-Standard-Template*.pdf
+industry.pdf
+local.pdf
+association.pdf
+enterprise.pdf
+legacy.pdf
+examples/*.pdf
 
 # Python cache
 __pycache__/
