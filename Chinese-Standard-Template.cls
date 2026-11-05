@@ -16,6 +16,7 @@
 \RequirePackage{caption}
 \RequirePackage{enumitem}
 \RequirePackage{longtable}
+\RequirePackage{placeins}
 \RequirePackage{array}
 \RequirePackage{amsmath}
 \RequirePackage{titlesec}
@@ -148,6 +149,7 @@
     \renewcommand{\theequation}{\arabic{equation}}
     \setlength{\parindent}{2\ccwd}
     \setlength{\parskip}{0pt}
+    \raggedbottom
     \setcounter{secnumdepth}{3}
 }
 \let\LiamOldAppendix\appendix

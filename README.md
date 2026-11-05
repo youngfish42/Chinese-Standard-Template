@@ -63,6 +63,8 @@ latexmk -C Chinese-Standard-Template
 
 `latexmkrc` 会自动完成 XeLaTeX、Biber、中文索引生成和索引后处理。`buildindex.py` 按顺序调用 `zhmakeindex` 与 `adjustind.py`，任一步骤失败都会中断构建。
 
+主输出文件为 `Chinese-Standard-Template.pdf`。修改源文件后如遇到异常缓存或引用提示，先运行 `make.bat clean` 再重新构建。Windows 下如果 PDF 正被预览器占用，请先关闭预览，再运行构建，避免 `xdvipdfmx` 无法写入 PDF。
+
 ### VSCode
 
 项目已包含 `.vscode/settings.json`。安装 LaTeX Workshop 后：
