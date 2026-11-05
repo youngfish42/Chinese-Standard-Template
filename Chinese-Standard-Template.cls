@@ -184,15 +184,21 @@
     \setlength{\parindent}{0pt}
     \begin{tikzpicture}
     \node at (0, 0) {\setlength{\fboxsep}{0pt}\makebox[0pt][l]{\parbox[t][0pt]{170mm}{\zihao{5}\heiti ICS \useICS\\CCS \useCCS\ifdefstring{\usestandardtype}{industry}{\\备案号 \userecordnumber}{}}}};
-    \node at (85mm, -36mm) {\resizebox{170mm}{8mm}{\titlefont\bfseries\zihao{2}\usestandardcovername}};
-    % \draw[fill] (119mm, -23mm) rectangle (159mm, -3mm);
-    \node at (139mm, -13mm) {%
-        \ifx\usestandardlogo\@empty
-            \resizebox{40mm}{20mm}{\titlefont\bfseries\zihao{2}\usestandardcode}%
+    \node at (85mm, -36mm) {%
+        \ifGB@stretchcover
+            \resizebox{170mm}{8mm}{\titlefont\bfseries\zihao{2}\usestandardcovername}%
         \else
-            \includegraphics[width = 40mm, height = 20mm]{\usestandardlogo}%
+            \makebox[170mm][c]{\titlefont\bfseries\zihao{2}\usestandardcovername}%
         \fi
     };
+    % \draw[fill] (119mm, -23mm) rectangle (159mm, -3mm);
+    \ifx\usestandardlogo\@empty
+        \node[fill = gray!20, minimum width = 40mm, minimum height = 20mm, align = center, text = gray!55] at (139mm, -13mm) {%
+            {\titlefont\bfseries\zihao{2}\usestandardcode}\\{\zihao{-5}\heiti LOGO 待替换}%
+        };
+    \else
+        \node at (139mm, -13mm) {\includegraphics[width = 40mm, height = 20mm]{\usestandardlogo}};
+    \fi
     \node at (170mm, -52.5mm) {\setlength{\fboxsep}{0pt}\makebox[0pt][r]{\parbox{170mm}{\raggedleft\zihao{4}\heiti\usebiaozhunhao\\\zihao{5}\songti\usedaitibiaozhunhao}}};
     \draw (0mm, -65mm) -- (170mm, -65mm);
     \node at (85mm, -105mm) {\makebox[0pt][c]{\zihao{1}\heiti\usename}};
@@ -217,26 +223,32 @@
 \newenvironment{preamble}[1]{\chapter{#1}}{\clearpage}
 
 % ----- Parameters
+\newif\ifGB@stretchcover
 \newcommand{\GB@type@national}{%
+    \GB@stretchcovertrue
     \def\usestandardcovername{中华人民共和国国家标准}%
     \def\usestandardcode{GB}%
     \def\usestandardlogo{GB-LOGO.jpg}%
 }
 \newcommand{\GB@type@industry}{%
+    \GB@stretchcovertrue
     \def\usestandardcovername{中华人民共和国行业标准}%
     \def\usestandardcode{XX}%
     \def\usestandardlogo{XX-LOGO.png}%
 }
 \newcommand{\GB@type@local}{%
+    \GB@stretchcovertrue
     \def\usestandardcovername{中华人民共和国地方标准}%
     \def\usestandardcode{DBXX}%
     \def\usestandardlogo{DBXX-LOGO.png}%
 }
 \newcommand{\GB@type@association}{%
+    \GB@stretchcoverfalse
     \def\usestandardcovername{团体标准}%
     \def\usestandardcode{T}%
 }
 \newcommand{\GB@type@enterprise}{%
+    \GB@stretchcoverfalse
     \def\usestandardcovername{企业标准}%
     \def\usestandardcode{Q}%
 }
