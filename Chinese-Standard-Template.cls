@@ -298,7 +298,7 @@
 \newlist{stdlist}{itemize}{2}
 \setlist[stdlist]{
     align = left,
-    labelsep = 0pt,
+    widest = {——},
     labelwidth = 3\ccwd,
     itemindent = 0pt,
     listparindent = 0pt,
@@ -306,12 +306,11 @@
     itemsep = 0pt,
     topsep = 0pt
 }
-\setlist[stdlist,1]{label = {——}, leftmargin = 5\ccwd}
-\setlist[stdlist,2]{label = {\GBsecondbullet}, leftmargin = 2\ccwd}
+\setlist[stdlist,1]{label = {——}, left = 2\ccwd .. 5\ccwd}
+\setlist[stdlist,2]{label = {\GBsecondbullet}, left = -1\ccwd .. 2\ccwd}
 \newlist{stdenum}{enumerate}{2}
 \setlist[stdenum]{
     align = left,
-    labelsep = 0pt,
     labelwidth = 3\ccwd,
     itemindent = 0pt,
     listparindent = 0pt,
@@ -319,14 +318,14 @@
     itemsep = 0pt,
     topsep = 0pt
 }
-\setlist[stdenum,1]{label = {\alph*)}, leftmargin = 5\ccwd}
-\setlist[stdenum,2]{label = {\arabic*)}, leftmargin = 2\ccwd}
+\setlist[stdenum,1]{label = {\alph*)}, left = 2\ccwd .. 5\ccwd}
+\setlist[stdenum,2]{label = {\arabic*)}, left = -1\ccwd .. 2\ccwd}
 \newlist{stdsymbols}{itemize}{1}
 \setlist[stdsymbols]{
     align = left,
-    labelsep = 0pt,
+    widest = {$a_i$——},
     labelwidth = 3\ccwd,
-    leftmargin = 5\ccwd,
+    left = 2\ccwd .. 5\ccwd,
     itemindent = 0pt,
     listparindent = 0pt,
     parsep = 0pt,

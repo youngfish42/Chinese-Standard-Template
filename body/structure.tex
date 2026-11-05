@@ -44,6 +44,27 @@
     \item 编号列项丙。
 \end{stdenum}
 
+\subsection{有序和无序列项混编}
+无序列项中可嵌入有序列项：
+\begin{stdlist}
+    \item 无序外层甲：
+    \begin{stdenum}
+        \item 有序内层甲；
+        \item 有序内层乙，使用较长内容检查有序内层的回行位置是否与内层正文起点对齐。
+    \end{stdenum}
+    \item 无序外层乙，用于检查内层有序列项结束后是否返回外层破折号位置。
+\end{stdlist}
+
+有序列项中也可嵌入无序列项：
+\begin{stdenum}
+    \item 有序外层甲：
+    \begin{stdlist}
+        \item 无序内层甲；
+        \item 无序内层乙，使用较长内容检查无序内层的圆点、正文和回行是否保持规范位置。
+    \end{stdlist}
+    \item 有序外层乙，用于检查混编后有序列项的编号是否连续。
+\end{stdenum}
+
 \chapter{符号和缩略语}
 下列符号和缩略语适用于本文件。\index{符号和缩略语}
 \begin{stdsymbols}
