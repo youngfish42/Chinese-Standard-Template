@@ -2,6 +2,14 @@
 
 用于起草国家标准、行业标准、地方标准、团体标准和企业标准的 LaTeX 模板。本项目提供 TeX Live 2026、XeLaTeX、latexmk、Biber、中文索引和 VSCode 构建配置。
 
+## 快速上手
+
+1. 打开 `Chinese-Standard-Template.tex`，使用 `\standardtype` 选择标准类型。
+2. 填写 `\ICS`、`\CCS`、`\biaozhunhao`、`\name`、`\department` 和发布日期等封面参数。
+3. 根据需要替换封面标识：设置 `\standardlogo{图片文件名}`。没有 Logo 的类别会显示灰色占位框和“LOGO 待替换”提示，正式发布前请替换或按发布机构要求处理。
+4. 修改 `body/` 中的前言、正文和附录内容；`examples/` 提供各类标准的独立入口。
+5. 运行 `make.bat`，或在 VSCode 中按 `Ctrl+Alt+B` 构建；`Ctrl+Alt+V` 打开 PDF。
+
 ## 规范依据
 
 - [GB/T 1.1—2020《标准化工作导则 第1部分：标准化文件的结构和起草规则》](<references/GBT+1.1-2020 标准化工作导则 第1部分：标准化文件的结构和起草规则.pdf>)：文件结构、要素和编排格式。
@@ -98,7 +106,7 @@ make.bat              Windows 构建入口
 - `local`：地方标准，示例使用规范中的 `DBXX` 标识。
 - `association`：团体标准，使用 `\standardcode{T/CAS}` 等文字代号。
 - `enterprise`：企业标准，使用 `\standardcode{Q/XX}` 等文字代号。
-- `\standardlogo{图片文件名}`：使用自定义组织 Logo，建议尺寸为 40mm×20mm；不设置时使用对应默认标识。
+- `\standardlogo{图片文件名}`：使用自定义组织 Logo，建议尺寸为 40mm×20mm；不设置时使用对应默认标识，无默认标识时显示灰色占位框。
 - `\standardcovername{...}`：需要国家标准化指导性技术文件等其他类别时，覆盖封面类别名称。
 
 `examples/` 提供四类独立示例；`examples/legacy.tex` 验证旧 `\documentclass{GB-template}` 的兼容性。所有示例的 PDF 均输出到项目根目录。
