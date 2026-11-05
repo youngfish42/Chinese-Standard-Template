@@ -294,7 +294,7 @@
     \noindent{\zihao{5}\heiti\thesection\quad}{\zihao{5}\songti#1}\par
     \vspace{.5\baselineskip}
 }
-\newcommand*{\GBsecondbullet}{\raisebox{0.15em}{\scalebox{0.75}{\textbullet}}}
+\newcommand*{\GBsecondbullet}{\raisebox{0.15em}{\textbullet}}
 \newlist{stdlist}{itemize}{2}
 \setlist[stdlist]{
     align = left,

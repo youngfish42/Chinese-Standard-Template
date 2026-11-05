@@ -3,9 +3,12 @@
 图与其前面的条文之间空一行，图题位于图下方。图中的注位于图脚注之上，图脚注位于图题之上。\index{图}
 
 \begin{figure}[htb]
-    \stdunits{单位为毫米}
     \centering
-    \rule{4cm}{3cm}\textsuperscript{a}
+    \begin{minipage}{80mm}
+        \stdunits{单位为毫米}
+        \centering
+        \rule{4cm}{3cm}\textsuperscript{a}
+    \end{minipage}
     \stdnote{这是图中的注，用于说明图内标记所表达的内容。}
     \stdfootnotetext{a}{这是图脚注。}
     \caption{图题示例}
